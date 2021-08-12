@@ -1,0 +1,32 @@
+
+<div class="banner mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.journaldugeek.com/content/uploads/2019/04/3515432-endgamedek.jpg);">
+  <div class="container">
+    <h1><%= @list.name %></h1>
+  </div>
+</div>
+
+<div class="container">
+
+    <h1>THIS IS THE SHOW</h1>
+    <div class="cards mb-5">
+        <% @bookmarks.each do |bookmark|%>
+            <div class="card-trip">
+                <img src=<%= bookmark.movie.poster_url %> />
+                    <div class="card-trip-infos">
+                        <div>
+                            <h2><%= bookmark.movie.title %><i class="fas fa-film pl-1"></i></h2>
+                            <p><%= bookmark.movie.overview %></p>
+                            <p><i class="fas fa-comments pr-1"></i><%= bookmark.comment %></p>
+                            <%= link_to bookmark_path(bookmark),method: :delete do %>
+                                <i class="fas fa-trash-alt pt-3"></i>
+                            <% end %>
+                            
+                        </div>
+                    <h2 class="card-trip pr-4 d-flex justify-content-between"><%= bookmark.movie.rating %>    <i class="far fa-star"></i></h2>
+                    <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" /> %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+    <%= link_to "add new", new_list_bookmark_path(@list) %>
+</div>
