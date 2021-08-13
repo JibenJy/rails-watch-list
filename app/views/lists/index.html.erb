@@ -1,12 +1,17 @@
 <div class="container">
     <h1>LES LIIIIIIIST</h1>
     <div class="cards">
+    
+    <% if @lists.count != 0 %>
         <% @lists.each do |list| %>
             <%= link_to list_path(list) do %>
                 <div class="card card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')">
                 <h1><%= list.name %></h1></div>
             <% end %>
         <% end %>
+        
+    <% end %>
+    
     </div>
 </div>
 
